@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andal N | Data Scientist Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: "Poppins", sans-serif; background-color: #f8f9fa; color: #333;}
+    html { scroll-behavior: smooth; }
+
+    header {
+      position: fixed; width: 100%; top: 0; left: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; z-index: 1000; transition: 0.3s;
+      background: #008080;
+    }
+    header h1 { font-size: 1.8rem; color: white; }
+    nav a {
+      color: white; margin-left: 1.5rem; text-decoration: none;
+      font-weight: 500; transition: 0.3s;
+    }
+
+    .hero {
+      position: relative; min-height: 85vh;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center; overflow: hidden;
+      background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+    }
+    .hero-overlay {
+      position: absolute; width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      opacity: 0.12;
+    }
+    .hero-card {
+      position: relative; background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px); border-radius: 20px; padding: 2.5rem 2rem;
+      max-width: 600px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .hero-card h2 { font-size: 2.3rem; margin-bottom: 0.3rem; color: #008080; }
+    .hero-card h3 { font-size: 1.2rem; margin-bottom: 1rem; color: #008080; }
+    .hero-card p { font-size: 1rem; color: #333; margin-bottom: 1.2rem; }
+
+    .hero-buttons .btn {
+      display: inline-block; margin: 0.4rem; padding: 0.6rem 1.3rem;
+      border-radius: 5px; font-weight: 600; text-decoration: none;
+      border: 2px solid #008080; color: #008080; background: white; transition: 0.3s;
+    }
+    .hero-buttons .btn.fill {
+      background: linear-gradient(90deg, #006666, #008080);
+      color: white; border-color: transparent;
+    }
+    .hero-buttons .btn:hover { background: #008080; color: white; }
+    .hero-buttons .btn.fill:hover { background: #006666; }
+
+    section { max-width: 1100px; margin: auto; padding: 4rem 1rem; }
+    .section-title {
+      text-align: center; font-size: 2rem; font-weight: 700;
+      background: linear-gradient(90deg, #006666, #008080);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 2.5rem;
+    }
+
+    .about {
+      background: white; padding: 2rem; border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      max-width: 800px; margin: auto; text-align: center;
+      font-size: 1.05rem; line-height: 1.7;
+    }
+
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+    }
+    .card {
+      background: white; border-radius: 10px; padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s;
+    }
+
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+    }
+    .project-card {
+      background: white; border-radius: 10px; padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s;
+    }
+    .view-btn {
+      display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem;
+      background: #008080; color: white; border-radius: 5px; font-size: 0.9rem;
+      text-decoration: none; transition: 0.3s;
+    }
+
+    .info-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .info-card {
+      background: white; border-radius: 10px; padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .contact-form button {
+      background: #008080;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .contact-form button:hover {
+      background: #006666;
+    }
+
+    footer {
+      background: #212529;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+    .footer-social { margin: 1rem 0; }
+    .footer-social a {
+      color: white;
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Andal N</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero fade-in">
+  <div class="hero-overlay"></div>
+  <div class="hero-card">
+    <h2>Andal N</h2>
+    <h3>Data Scientist | Data Analyst</h3>
+    <p>Turning raw data into business insights with Python, SQL, ML, Power BI, and deep statistical analysis.</p>
+    <div class="hero-buttons">
+     <a href="Andal_N_CV.pdf" class="btn" download>Download CV</a>
+      <a href="http://www.linkedin.com/in/andal-narayan" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/Andal04" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="fade-in">
+  <h2 class="section-title">About Me</h2>
+  <div class="about">
+    Aspiring <b>Data Scientist & Analyst</b> with a strong analytical mindset and hands-on internship experience in <b>machine learning, EDA, and business insight generation</b>. Proficient in <b>Python, SQL, Power BI, Tableau</b>, and <b>statistical modeling</b>. Skilled at transforming raw data into actionable insights to drive decision-making and innovation.
+  </div>
+</section>
+
+<section id="skills" class="fade-in">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="card">
+      <i class="fab fa-python"></i>
+      <h3>Python</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-database"></i>
+      <h3>SQL</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-chart-line"></i>
+      <h3>Power BI</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-brain"></i>
+      <h3>Machine Learning</h3>
+    </div>
+    <div class="card">
+      <i class="fab fa-git-alt"></i>
+      <h3>Git</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-chart-pie"></i>
+      <h3>Tableau</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-percentage"></i>
+      <h3>Statistical Analysis</h3>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="fade-in">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card"><i class="fas fa-bicycle"></i>
+      <h3>Bicycle Rental Demand Forecasting</h3>
+      <p>Estimated daily bike rentals to enhance operational planning and seasonal demand management.</p>
+      <a href="https://github.com/Andal04/BikeRental" class="view-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card"><i class="fas fa-home"></i>
+      <h3>House Price Prediction</h3>
+      <p>Modeled housing prices using real estate features to assist investors and pricing decisions.</p>
+      <a href="https://github.com/Andal04/HousePricePrediction" class="view-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card"><i class="fas fa-shield-alt"></i>
+      <h3>Insurance Purchase Prediction</h3>
+      <p>Identified purchase likelihood to support targeted campaigns in insurance sales funnels.</p>
+      <a href="https://github.com/Andal04/InsuranceClaimPrediction" class="view-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card"><i class="fas fa-heart"></i>
+      <h3>Heart Disease Risk Prediction</h3>
+      <p>Analyzed patient attributes to predict cardiac risk levels and guide preventive care planning.</p>
+      <a href="https://github.com/Andal04/HeartDisease" class="view-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card"><i class="fas fa-users"></i>
+     <h3>INX Employee Performance</h3>
+     <p>Analyzed HR metrics to predict employee performance with machine learning.</p>
+     <a href="https://github.com/Andal04/Employee_Performance" class="view-btn" target="_blank">View Project</a>
+    </div>
+    <div class="project-card"><i class="fas fa-phone"></i>
+  <h3>Telecom Churn Prediction</h3>
+  <p>Built churn prediction model to proactively retain telecom customers through tailored retention efforts.</p>
+  <a href="https://github.com/Andal04/Telecom_Churn" class="view-btn" target="_blank">View Project</a>
+</div>
+
+
+</div>
+</section>
+
+<section id="experience" class="fade-in">
+  <h2 class="section-title">Experience</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Data Science & Analytics Intern</h3>
+      <p><b>Rubixe</b> | Aug 2024 – Feb 2025</p>
+      <p>Cleaned and analyzed datasets using SQL and Pandas. Built dashboards with Power BI and Tableau. Delivered business insights using ML models like XGBoost and Decision Tree.</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="fade-in">
+  <h2 class="section-title">Education</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Electrical and Electronics Engineering</h3>
+      <p>K.L.N College of Engineering (Anna University) | CGPA: 7.1</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact section removed as requested -->
+
+
+<footer class="fade-in">
+  <div class="footer-content">
+    <p><b>Contact Information</b></p>
+    <p>Email: <a href="mailto:andalanitha04@gmail.com">andalanitha04@gmail.com</a></p>
+    
+    <p>Location: Bangalore, India</p>
+    <div class="footer-social">
+      <a href="https://github.com/Andal04" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="http://www.linkedin.com/in/andal-narayan-a229b034a" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>© 2025 Andal N. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function() {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+ 
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
